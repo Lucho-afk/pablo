@@ -1,13 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <div id="gridClients" style="left: unset; top: unset"></div>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-------------------------------------estilos---------------------------------------------->
+    <link
+      href="./dojo-release-1.17.3/dijit/themes/claro/claro.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link rel="stylesheet" href="./styles/style.css" />
+    <link
+      rel="stylesheet"
+      href="./dojo-release-1.17.3/dijit/themes/claro/claro.css"
+    />
+    <style type="text/css">
+      @import "./dojo-release-1.17.3/dojo/resources/dojo.css";
+      @import "./dojo-release-1.17.3/dijit/themes/claro/claro.css";
+      @import "./dojo-release-1.17.3/dojox/grid/enhanced/resources/claro/EnhancedGrid.css";
+      @import "./dojo-release-1.17.3/dojox/grid/enhanced/resources/EnhancedGrid_rtl.css";
+
+      /*Grid need a explicit width/height by default*/
+      #grid {
+        width: 60em;
+        height: 40em;
+      }
+    </style>
+    <!---------------------------------js imports---------------------------------------------->
+
+    <script>
+      dojoConfig = {
+        parseOnLoad: true,
+        foo: "bar",
+        async: true,
+      };
+    </script>
     <script src="./js/index.js"></script>
-</body>
+    <script src="./dojo-release-1.17.3/dojo/dojo.js"></script>
+    <script src="./js/clientes.js"></script>
+    <title>clientes</title>
+  </head>
+  <body id="contenido" onload="grilla();" class="claro">
+    <button id="addUser" onclick="formDialog()">add Client</button>
+    <div id="gridClientes"></div>
+    <script src="./js/index.js"></script>
+  </body>
 </html>

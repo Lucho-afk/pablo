@@ -53,36 +53,19 @@
         async: true,
       };
     </script>
-    <script src="index.js"></script>
+    <script src="./js/index.js"></script>
     <script src="./dojo-release-1.17.3/dojo/dojo.js"></script>
 
     <title>DOJO PROJECT</title>
   </head>
-  <body id="contenido" onload="menu(); mostrarData();" class="claro">
+  <body
+    id="contenido"
+    onload="menu(); mostrarData(); construirForm();"
+    class="claro"
+  >
     <h1>THE PROJECT DOJO</h1>
     <div id="menu"></div>
-    <div id="users">
-      <button id="addUser" style="display: none" onclick="formDialog()">
-        add Client
-      </button>
-      <div id="gridClients"></div>
-    </div>
-    <div id="products">
-      <button id="addProduct" style="display: none" onclick="formDialogP()">
-        add Product
-      </button>
-      <div id="gridProducts"></div>
-    </div>
-
-    <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
-
-    <div>
-      <!-- <Object type="text/html" data="./form.html" style="width: 100%;height: 450px;"></Object> -->
-      <div id="content"></div>
-    </div>
-
-    <script src="./js/index.js"></script>
-
-    <script src="./js/form.js"></script>
+    <div id="users" styles=" width: 560px;height: 500px;"></div>
+    <div id="products" styles=" width: 560px;height: 500px;"></div>
   </body>
 </html>
