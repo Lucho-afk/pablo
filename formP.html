@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+     <link rel="stylesheet" href="./dojo-release-1.17.3/dijit/themes/claro/claro.css">
+
+     <script>dojoConfig = { async: true, parseOnLoad: true }</script>
+    <script src='./dojo-release-1.17.3/dojo/dojo.js'></script>
+
+    <script type="text/javascript" src="./js/form.js"></script> 
+</head>
+
+<body class="claro" onload="formulario();" style="width: 90%; height: auto;">
+
+    <div style="width: 90%; height: auto;">
+    <h4>Register Client</h4><br>
+
+    <div data-dojo-type="dijit/form/Form" id="myForm" data-dojo-id="myForm" encType="multipart/form-data" action=""
+        method="">
+
+        <table style="border: 1px solid #9f9f9f;" cellspacing="10">
+            <tr>
+                <td>
+                    <label for="name">Product:</label>
+                </td>
+                <td>
+                    <input data-dojo-type="dijit/form/ValidationTextBox" id="product" name="product" data-dojo-props="
+                    promptMessage:'Enter a Product: Max 25 characters',
+                    regExp: '.[a-z, A-Z, 0-9]{2,24}$',
+                    required: true,
+                    placeHolder:'add Product Name',
+                    invalidMessage: 'add Name Required!'" />
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <label for="name">Precio: US$</label>
+                </td>
+                <td>
+                    <input data-dojo-type="dijit/form/ValidationTextBox" id="price" name="price" data-dojo-props="
+                    promptMessage:'Enter a price: Max 7 characters',
+                    regExp: '.[0-9]{0,6}$',
+                    required: true,
+                    placeHolder:'US$ add price',
+                    invalidMessage: 'add price Required!'" />
+                </td>
+            </tr>
+
+        </table>
+
+        <div data-dojo-type="dijit/form/Button" id="submit" type="submit" onclick="reload()"></div>
+        <div data-dojo-type="dijit/form/Button" id="reset"></div>
+
+        <script>
+            function reload(){
+                window.location.href = "http://127.0.0.1:5500/index.html";
+            }
+        </script>
+    </div>
+</div>
+</body>
+
+</html>
