@@ -104,3 +104,82 @@ body {
   width: 550px;
   height: 550px;
 }
+
+/*--------------------------------------------------------------*/
+
+#users {
+  margin: 0.5%;
+  padding: 0.5%;
+  text-align: center;
+}
+
+#addUser {
+  font-family: "BIZ UDPMincho", serif;
+  font-size: 1rem;
+  width: 27, 5%;
+  margin-bottom: 1rem;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+#addProduct {
+  font-family: "BIZ UDPMincho", serif;
+  font-size: 1rem;
+  width: 27, 5%;
+  margin-bottom: 1rem;
+  padding: 10px;
+  border-radius: 5px;
+  margin-top: 1rem;
+}
+
+#menu {
+  font-family: "BIZ UDPMincho", serif;
+
+  border-radius: 5px;
+  margin: 20px;
+  padding: 20px;
+  /*text-align: center !important;*/
+  font-size: 20px;
+}
+
+#user {
+  font-family: "BIZ UDPMincho", serif;
+  /* width: 30%; */
+  text-align: center;
+  /* margin: 5px; */
+  /* padding: 10px; */
+  /* font-family: "BIZ UDPMincho", serif; */
+  /* width: 30%; */
+  /* text-align: center; */
+  /* margin: 5px; */
+  /* padding: 10px; */
+  border-radius: 5px;
+}
+
+#title {
+  font-family: "BIZ UDPMincho", serif;
+
+  text-align: center;
+  font-size: 50px;
+}
+
+#dijit_Dialog_0 {
+  font-family: "BIZ UDPMincho", serif;
+
+  border-radius: 5px;
+}
+
+#prod {
+  font-family: "BIZ UDPMincho", serif;
+
+  border-radius: 5px;
+}
+
+.dojoxGridMasterHeader {
+  text-align: center;
+}
+
+#menu {
+  display: flex;
+  justify-content: space-around;
+}

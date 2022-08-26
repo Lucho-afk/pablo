@@ -4,6 +4,23 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="./dojo-release-1.17.3/dijit/themes/claro/claro.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <script>
+      dojoConfig = { async: true };
+    </script>
+    <link rel="stylesheet" href="./styles/style.css" />
+    <script>
+      dojoConfig = {
+        parseOnLoad: false,
+        foo: "bar",
+        async: true,
+      };
+    </script>
+    <script src="./dojo-release-1.17.3/dojo/dojo.js"></script>
     <!-------------------------------------estilos---------------------------------------------->
     <link
       href="./dojo-release-1.17.3/dijit/themes/claro/claro.css"
@@ -27,6 +44,20 @@
         height: 40em;
       }
     </style>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Silkscreen&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=BIZ+UDPMincho&display=swap"
+      rel="stylesheet"
+    />
     <!---------------------------------js imports---------------------------------------------->
 
     <script>
@@ -36,12 +67,13 @@
         async: true,
       };
     </script>
+    <script src="./js/index.js"></script>
     <script src="./dojo-release-1.17.3/dojo/dojo.js"></script>
     <script src="./js/clientes.js"></script>
     <title>clientes</title>
   </head>
   <body id="contenido" onload="grilla();" class="claro">
-    <button id="addUser" onclick="formDialog()">add Client</button>
+    <button id="addUser" onclick="formDialog()">Add Client</button>
     <div id="gridClientes"></div>
     <script src="./js/index.js"></script>
   </body>

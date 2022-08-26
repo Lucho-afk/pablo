@@ -155,7 +155,7 @@ function menu() {
     pMenuBar.addChild(
       new MenuBarItem({
         id: "user",
-        label: "Users",
+        label: "Clients",
         onClick: function () {
           dom.byId("users").style.display = "inline";
           dom.byId("products").style.display = "none";
@@ -167,7 +167,7 @@ function menu() {
     pMenuBar.addChild(
       new MenuBarItem({
         id: "prod",
-        label: "Productos",
+        label: "Products",
         onClick: function () {
           dom.byId("products").style.display = "inline";
           dom.byId("users").style.display = "none";

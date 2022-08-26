@@ -217,7 +217,7 @@ function formDialog() {
           </table>
             
           <div id="submit"></div>
-          <div id="reset" type="reset"></div>` +
+          <div id="reset"></div>` +
         "</div>",
       // style: "width: 300px",
     });
