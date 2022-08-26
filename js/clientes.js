@@ -141,7 +141,6 @@ function formDialog() {
     "dijit/form/Button",
     "dijit/form/ValidationTextBox",
     "dijit/form/DateTextBox",
-    "dojox/validate",
     "dojox/validate/web",
     "dojo/domReady!",
   ], function (
@@ -151,16 +150,14 @@ function formDialog() {
     Button,
     ValidationTextBox,
     DateTextBox,
-    validate,
     web
   ) {
-    if (!generatedButton) {
-      myDialog = new Dialog({
-        title: "Register Client",
-        content:
-          "<div>" +
-          ` 
-
+    //if (!generatedButtonClient) {
+    myDialogClient = new Dialog({
+      title: "Register Client",
+      content:
+        "<div>" +
+        ` 
       <div data-dojo-type="dijit/form/Form" id="myForm" data-dojo-id="myForm" encType="multipart/form-data" action=""
           method="">
   
@@ -219,57 +216,55 @@ function formDialog() {
               </tr>
           </table>
             
-          <div data-dojo-type="dijit/form/Button" id="submit"></div>
-          <div data-dojo-type="dijit/form/Button" id="reset" type="reset"></div>` +
-          "</div>",
-        style: "width: 300px",
-      });
-      myDialog.show();
+          <div id="submit"></div>
+          <div id="reset" type="reset"></div>` +
+        "</div>",
+      // style: "width: 300px",
+    });
+    myDialogClient.show();
 
-      submit = new Button({
-        label: "Submit",
-        type: "submit",
-        onClick: function (event) {
-          // event.preventDefault();
-          let clients = JSON.parse(localStorage.getItem("customers")) || [];
+    submit = new Button({
+      label: "Submit",
+      type: "submit",
+      onClick: function (event) {
+        // event.preventDefault();
+        let clients = JSON.parse(localStorage.getItem("customers")) || [];
 
-          console.log(clients);
-          let client = { id: "", first: "", last: "", phone: "", email: "" };
+        let client = { id: "", first: "", last: "", phone: "", email: "" };
+        // console.log("ultimo id: ",clients[clients.length - 1].id)
 
-          client.id = (clients.length + 1).toString();
+        let newId = parseInt(clients[clients.length - 1].id) + 1;
+        client.id = newId.toString();
+        var form = dijit.byId("myForm");
 
-          if (validate) {
-            client.first = dijit.byId("myForm").getValues().first;
-            client.last = dijit.byId("myForm").getValues().last;
-            client.phone = dijit.byId("myForm").getValues().phone;
-            client.email = dijit.byId("myForm").getValues().email;
-            clients = [...clients, client];
+        if (form.validate()) {
+          client.first = dijit.byId("myForm").getValues().first;
+          client.last = dijit.byId("myForm").getValues().last;
+          client.phone = dijit.byId("myForm").getValues().phone;
+          client.email = dijit.byId("myForm").getValues().email;
+          clients = [...clients, client];
 
-            localStorage.setItem("customers", JSON.stringify(clients));
+          localStorage.setItem("customers", JSON.stringify(clients));
+        } else {
+          alert("The form contains invalid data or missing information!");
+          return false;
+        }
 
-            console.log(clients);
-            // return confirm('Valid form, press OK to send');
-          } else {
-            alert("The form contains invalid data or missing information!");
-            return false;
-          }
+        location.reload();
+      },
+    });
+    submit.placeAt("submit");
 
-          location.reload();
-          // return true;
-        },
-      });
-      submit.placeAt("submit");
-
-      reset = new Button({
-        label: "Reset",
-        type: "reset",
-        onClick: function () {
-          return confirm("Press OK to reset widget values");
-        },
-      });
-      reset.placeAt("reset");
-    }
-    generatedButton = true;
-    myDialog.show();
+    reset = new Button({
+      label: "Reset",
+      type: "reset",
+      onClick: function () {
+        return confirm("Press OK to reset widget values");
+      },
+    });
+    reset.placeAt("reset");
+    //}
+    //generatedButtonClient = true;
+    myDialogClient.show();
   });
 }

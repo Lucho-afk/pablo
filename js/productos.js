@@ -154,31 +154,55 @@ function formDialogP() {
     validate,
     web
   ) {
-    if (!generatedButton) {
-      myDialog = new Dialog({
-        title: "Register Product",
-        content:
-          "<div>" +
-          ` 
+    //if (!generatedButtonProduct) {
+    myDialogProduct = new Dialog({
+      title: "Register Product",
+      content:
+        "<div id='productosForm'>" +
+        ` 
 
-      <div data-dojo-type="dijit/form/Form" id="myForm" data-dojo-id="myForm" encType="multipart/form-data" action=""
+      <div data-dojo-type="dijit/form/Form" id="myForm2" data-dojo-id="myForm" encType="multipart/form-data" action=""
           method="">
   
           <table style="border: 1px solid #9f9f9f;" cellspacing="10">
           <tr>
               <td>
-                  <label for="name">Product:</label>
+                  <label for="product">Product:</label>
               </td>
               <td>
-                  <input data-dojo-type="dijit/form/ValidationTextBox" id="products" name="products" data-dojo-props="
+                  <input data-dojo-type="dijit/form/ValidationTextBox" id="product" name="product" data-dojo-props="
                   promptMessage:'Enter a Product: Max 25 characters',
                   regExp: '.[a-z, A-Z, 0-9]{2,24}$',
                   required: true,
-                  placeHolder:'add Product Name',
+                  placeHolder:'add Name',
                   invalidMessage: 'add Name Required!'" />
               </td>
           </tr>
-
+          <tr>
+          <td>
+              <label for="description">Descripcion:</label>
+          </td>
+          <td>
+              <input data-dojo-type="dijit/form/ValidationTextBox" id="description" name="description" data-dojo-props="
+              promptMessage:'Enter a Product: Max 25 characters',
+              regExp: '.[a-z, A-Z, 0-9]{2,24}$',
+              required: true,
+              placeHolder:'add Description',
+              invalidMessage: 'add Description Required!'" />
+          </td>
+      </tr> <tr>
+      <td>
+          <label for="category">Category:</label>
+      </td>
+      <td>
+          <input data-dojo-type="dijit/form/ValidationTextBox" id="category" name="category" data-dojo-props="
+          promptMessage:'Enter a Product: Max 25 characters',
+          regExp: '.[a-z, A-Z, 0-9]{2,24}$',
+          required: true,
+          placeHolder:'add Category',
+          invalidMessage: 'add Category Required!'" />
+      </td>
+  </tr>
           <tr>
               <td>
                   <label for="name">Precio: US$</label>
@@ -192,59 +216,63 @@ function formDialogP() {
                   invalidMessage: 'add price Required!'" />
               </td>
           </tr>
+          
 
       </table>
             
-          <div data-dojo-type="dijit/form/Button" id="submit"></div>
-          <div data-dojo-type="dijit/form/Button" id="reset" type="reset"></div>` +
-          "</div>",
-        style: "width: 300px",
-      });
-      myDialog.show();
+          <div id="submit2"></div>
+          <div id="reset2" type="reset"></div>` +
+        "</div>",
+      // style: "width: 300px"
+    });
+    myDialogProduct.show();
+    submit = new Button({
+      label: "Submit",
+      type: "submit",
+      onClick: function (event) {
+        // event.preventDefault();
+        let prods = JSON.parse(localStorage.getItem("products")) || [];
 
-      submit = new Button({
-        label: "Submit",
-        type: "submit",
-        onClick: function (event) {
-          // event.preventDefault();
-          let prods = JSON.parse(localStorage.getItem("products")) || [];
+        let prod = {
+          id: "",
+          name: "",
+          price: "",
+          description: "",
+          category: "",
+        };
+        let newId = parseInt(prods[prods.length - 1].id) + 1;
+        prod.id = newId.toString();
 
-          console.log(prods);
-          let prod = { id: "", name: "", price: "" };
+        var form = dijit.byId("myForm2");
 
-          prod.id = (prods.length + 1).toString();
+        if (form.validate()) {
+          prod.name = dijit.byId("myForm2").getValues().product;
+          prod.price = dijit.byId("myForm2").getValues().price;
+          prod.description = dijit.byId("myForm2").getValues().description;
+          prod.category = dijit.byId("myForm2").getValues().category;
+          prods = [...prods, prod];
 
-          if (validate) {
-            prod.name = dijit.byId("myForm").getValues().name;
-            prod.price = dijit.byId("myForm").getValues().price;
+          localStorage.setItem("products", JSON.stringify(prods));
+        } else {
+          alert("The form contains invalid data or missing information!");
+          return false;
+        }
 
-            prods = [...prods, prod];
+        location.reload();
+      },
+    });
+    submit.placeAt("submit2");
 
-            localStorage.setItem("products", JSON.stringify(prods));
-
-            console.log(prods);
-            // return confirm('Valid form, press OK to send');
-          } else {
-            alert("The form contains invalid data or missing information!");
-            return false;
-          }
-
-          location.reload();
-          // return true;
-        },
-      });
-      submit.placeAt("submit");
-
-      reset = new Button({
-        label: "Reset",
-        type: "reset",
-        onClick: function () {
-          return confirm("Press OK to reset widget values");
-        },
-      });
-      reset.placeAt("reset");
-    }
-    generatedButton = true;
-    myDialog.show();
+    reset = new Button({
+      label: "Reset",
+      type: "reset",
+      onClick: function () {
+        return confirm("Press OK to reset widget values");
+      },
+    });
+    reset.placeAt("reset2");
+    //}
+    //generatedButtonProduct = true;
+    myDialogProduct.show();
   });
 }
